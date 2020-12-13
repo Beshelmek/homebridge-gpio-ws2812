@@ -1,0 +1,46 @@
+{
+  "name": "homebridge-gpio-ws2812",
+  "version": "3.3.2",
+  "description": "Homebridge plugin to control a NeoPixel Strip.",
+  "license": "ISC",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "author": "Vladimir Votyakov <votyakov1404@gmail.com>",
+  "contributors": [
+    ""
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Beshelmek/homebridge-gpio-ws2812.git"
+  },
+  "scripts": {
+    "lint": "grunt lint",
+    "test": "mocha test/simple.js",
+    "prepublish": "grunt lint && mocha"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "chai-things": "^0.2.0",
+    "express": "^4.13.3",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.3",
+    "hap-nodejs": "0.0.3",
+    "mocha": "^2.3.4"
+  },
+  "bugs": {
+    "url": "https://github.com/Beshelmek/homebridge-gpio-ws2812/issues"
+  },
+  "homepage": "https://github.com/Beshelmek/homebridge-gpio-ws2812",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  }
+}
