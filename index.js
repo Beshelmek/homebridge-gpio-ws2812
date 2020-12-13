@@ -1,5 +1,4 @@
 var Service, Characteristic;
-const ws281x = require('rpi-ws281x-native');
 
 /**
  * @module homebridge
@@ -40,7 +39,9 @@ function HTTP_NEO(log, config) {
 
     this.log('ws281x init as user: ' + process.env.USER);
 
-    ws281x.init(this.leds, {
+    this.ws281x = require('rpi-ws281x-native');
+
+    this.ws281x.init(this.leds, {
         "gpioPing": this.pin
     });
 }
@@ -58,12 +59,12 @@ HTTP_NEO.prototype = {
     },
 
     sendBuffer: function(buffer){
-        var colorData = new Uint32Array(this.length);
+        var colorData = new Uint32Array(this.leds);
         for (var i = 0; i < buffer.length; i += 3) {
             var r = buffer[i] || 0, g = buffer[i + 1] || 0, b = buffer[i + 2] || 0;
             colorData[i/3] = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
         }
-        ws281x.render(colorData);
+        this.ws281x.render(colorData);
     },
 
     getServices: function() {
