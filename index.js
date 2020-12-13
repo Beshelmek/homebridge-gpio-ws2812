@@ -112,9 +112,8 @@ HTTP_NEO.prototype = {
      * @param {function} callback The callback that handles the response.
      */
     setPowerState: function(state, callback) {
-        //TODO state = true/false
-        this.cache.status = true;
-        callback();
+        this.cache.status = state;
+        this._setRGB(callback);
     },
 
     /**
@@ -133,7 +132,6 @@ HTTP_NEO.prototype = {
      */
     setBrightness: function(level, callback) {
         this.cache.brightness = level;
-        //this.ws281x.setBrightness((255 / 100) * level);
         this._setRGB(callback);
     },
 
@@ -193,8 +191,10 @@ HTTP_NEO.prototype = {
         var colorData = new Uint32Array(this.leds);
         colorData.fill(0);
 
-        for (var i = 0; i < this.leds; i++) {
-            colorData[i] = this._rgb2Int(rgb.g, rgb.r, rgb.b);
+        if (this.cache.state){
+            for (var i = 0; i < this.leds; i++) {
+                colorData[i] = this._rgb2Int(rgb.g, rgb.r, rgb.b);
+            }
         }
 
         this.ws281x.render(colorData);
