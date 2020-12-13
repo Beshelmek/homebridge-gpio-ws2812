@@ -38,6 +38,8 @@ function HTTP_NEO(log, config) {
     this.cache.hue = 0;
     this.cache.saturation = 0;
 
+    this.log('ws281x init as user: ' + process.env.USER);
+
     ws281x.init(this.leds, {
         "gpioPing": this.pin
     });
