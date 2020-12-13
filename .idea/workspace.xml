@@ -6,23 +6,12 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d9dd85c0-5b94-4316-a5f9-5657a3f9c55b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/HomeBridge_-_NEOPixel_light/HomeBridge_-_NEOPixel_light.ino" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -56,7 +45,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607832128701</updated>
-      <workItem from="1607832129729" duration="1100000" />
+      <workItem from="1607832129729" duration="2524000" />
     </task>
     <servers />
   </component>
@@ -91,5 +80,9 @@
       <screen x="0" y="23" width="2880" height="1528" />
     </state>
     <state width="918" height="445" key="GridCell.Tab.0.right/0.23.2880.1528@0.23.2880.1528" timestamp="1607832173722" />
+    <state x="2142" y="683" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1607833510474">
+      <screen x="0" y="23" width="2880" height="1528" />
+    </state>
+    <state x="2142" y="683" key="git4idea.remote.GitConfigureRemotesDialog/0.23.2880.1528@0.23.2880.1528" timestamp="1607833510474" />
   </component>
 </project>

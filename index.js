@@ -1,4 +1,5 @@
 var Service, Characteristic;
+const ws281x = require('rpi-ws281x-native');
 
 /**
  * @module homebridge
@@ -28,15 +29,16 @@ function HTTP_NEO(log, config) {
     this.service                       = 'Light';
     this.name                          = config.name;
 
-    this.http_method                   = config.http_method               || 'GET';
-    this.username                      = config.username                  || '';
-    this.password                      = config.password                  || '';
+    this.pin                           = config.pin || 18;
+    this.leds                          = config.leds  || 96;
 
     this.cache = {};
     this.cache.status = true;
     this.cache.brightness = 0;
     this.cache.hue = 0;
     this.cache.saturation = 0;
+
+    //ws281x.init(length, options);
 }
 
 /**
@@ -48,7 +50,19 @@ HTTP_NEO.prototype = {
     /** Required Functions **/
     identify: function(callback) {
         this.log('Identify requested!');
+        ws281x.init(this.leds, {
+            "gpioPing": this.pin
+        });
         callback();
+    },
+
+    sendBuffer: function(buffer){
+        var colorData = new Uint32Array(this.length);
+        for (var i = 0; i < buffer.length; i += 3) {
+            var r = buffer[i] || 0, g = buffer[i + 1] || 0, b = buffer[i + 2] || 0;
+            colorData[i/3] = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+        }
+        ws281x.render(colorData);
     },
 
     getServices: function() {
@@ -107,6 +121,7 @@ HTTP_NEO.prototype = {
     setPowerState: function(state, callback) {
         //TODO state = true/false
         this.cache.status = true;
+        callback();
     },
 
     /**
@@ -174,6 +189,7 @@ HTTP_NEO.prototype = {
      */
     _setRGB: function(callback) {
         var rgb = this._hsvToRgb(this.cache.hue, this.cache.saturation, this.cache.brightness);
+
         var r = this._decToHex(rgb.r);
         var g = this._decToHex(rgb.g);
         var b = this._decToHex(rgb.b);
@@ -181,6 +197,10 @@ HTTP_NEO.prototype = {
         this.log('_setRGB converting H:%s S:%s B:%s to RGB:%s ...', this.cache.hue, this.cache.saturation, this.cache.brightness, r + g + b);
 
         //TODO set color
+
+        this.sendBuffer(new Uint8Array([
+            rgb.r, rgb.g, rgb.b
+        ]));
 
         callback();
     },
