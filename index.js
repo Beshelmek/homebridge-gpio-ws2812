@@ -188,7 +188,7 @@ HTTP_NEO.prototype = {
         var g = this._decToHex(rgb.g);
         var b = this._decToHex(rgb.b);
 
-        this.log('_setRGB converting H:%s S:%s B:%s to RGB:%s (%s, %s, %s)...', this.cache.hue, this.cache.saturation, this.cache.brightness, r + g + b, rgb.r, rgb.g, rgb.b;
+        this.log('_setRGB converting H:%s S:%s B:%s to RGB:%s (%s, %s, %s)...', this.cache.hue, this.cache.saturation, this.cache.brightness, r + g + b, rgb.r, rgb.g, rgb.b);
 
         var colorData = new Uint32Array(this.leds);
         colorData.fill(0);
