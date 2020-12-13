@@ -38,7 +38,9 @@ function HTTP_NEO(log, config) {
     this.cache.hue = 0;
     this.cache.saturation = 0;
 
-    //ws281x.init(length, options);
+    ws281x.init(this.leds, {
+        "gpioPing": this.pin
+    });
 }
 
 /**
@@ -50,9 +52,6 @@ HTTP_NEO.prototype = {
     /** Required Functions **/
     identify: function(callback) {
         this.log('Identify requested!');
-        ws281x.init(this.leds, {
-            "gpioPing": this.pin
-        });
         callback();
     },
 

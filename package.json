@@ -1,6 +1,6 @@
 {
   "name": "homebridge-gpio-ws2812",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "description": "Homebridge plugin to control a NeoPixel Strip.",
   "license": "ISC",
   "keywords": [
