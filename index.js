@@ -194,7 +194,7 @@ HTTP_NEO.prototype = {
         colorData.fill(0);
 
         for (var i = 0; i < this.leds; i++) {
-            colorData[i] = this._rgb2Int(rgb.r, rgb.g, rgb.b);
+            colorData[i] = this._rgb2Int(rgb.g, rgb.r, rgb.b);
         }
 
         this.ws281x.render(colorData);
