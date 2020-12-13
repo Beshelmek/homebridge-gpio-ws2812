@@ -133,8 +133,8 @@ HTTP_NEO.prototype = {
      */
     setBrightness: function(level, callback) {
         this.cache.brightness = level;
-        this.ws281x.setBrightness((255 / 100) * level);
-        //this._setRGB(callback);
+        //this.ws281x.setBrightness((255 / 100) * level);
+        this._setRGB(callback);
     },
 
     /**
@@ -182,7 +182,7 @@ HTTP_NEO.prototype = {
      * @param {function} callback The callback that handles the response.
      */
     _setRGB: function(callback) {
-        var rgb = this._hsvToRgb(this.cache.hue, this.cache.saturation, 255);
+        var rgb = this._hsvToRgb(this.cache.hue, this.cache.saturation, this.cache.brightness);
 
         var r = this._decToHex(rgb.r);
         var g = this._decToHex(rgb.g);
